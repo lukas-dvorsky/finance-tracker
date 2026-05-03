@@ -1,13 +1,15 @@
 import type { Metadata } from "next";
-import { Geist, Instrument_Sans, Lora } from "next/font/google";
+import { Geist, Instrument_Sans, Lora, Inter, Geist_Mono, Figtree, EB_Garamond, Source_Sans_3 } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 import Navbar from "@/components/ui/navbar";
 import { cn } from "@/lib/utils";
 
-const loraHeading = Lora({subsets:['latin'],variable:'--font-heading'});
+const ebGaramond = EB_Garamond({subsets:['latin'],variable:'--font-serif'});
 
-const instrumentSans = Instrument_Sans({subsets:['latin'],variable:'--font-sans'});
+const instrumentSansHeading = Instrument_Sans({subsets:['latin'],variable:'--font-heading'});
+
+const sourceSans3 = Source_Sans_3({subsets:['latin'],variable:'--font-sans'});
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
@@ -31,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning className={cn("font-sans", instrumentSans.variable, loraHeading.variable)}>
+    <html lang="en" suppressHydrationWarning className={cn( ebGaramond.variable, "font-sans", sourceSans3.variable, instrumentSansHeading.variable)}>
       <body className={`${geistSans.className} antialiased`}>
         <Navbar />
         <ThemeProvider
