@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import { AuthButton } from "../auth-button";
 import { EnvVarWarning } from "../env-var-warning";
-import { hasEnvVars } from "@/lib/utils";
 
 function Navbar() {
   return (
@@ -14,13 +13,9 @@ function Navbar() {
             Luke
           </div>
         </div>
-        {!hasEnvVars ? (
-          <EnvVarWarning />
-        ) : (
-          <Suspense>
-            <AuthButton />
-          </Suspense>
-        )}
+        <Suspense>
+          <AuthButton />
+        </Suspense>
       </div>
     </nav>
   );
